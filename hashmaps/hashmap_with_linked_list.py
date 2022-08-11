@@ -7,17 +7,16 @@ class HashMap:
     self.array = [LinkedList() for item in range(self.array_size)] # list of instances of LinkedList class
     
   def hash(self, key): # sums the unicode values ex: ord('A') == unicode value 65, chr(65) == char 'A'
-    print("HASH\n########################")
-    for char in key:
-      print(f'Unicode value of {char} is {ord(char)}')
-    print(f'Sum of unicode values: {sum(key.encode())}')
+    #print("HASH\n########################")
+    #for char in key:
+      #print(f'Unicode value of {char} is {ord(char)}')
+    #print(f'Sum of unicode values: {sum(key.encode())}')
     # print("Hash Method: {}".format(sum(key.encode()))) 
-    print("########################\n")
-
+    #print("########################\n")
     return sum(key.encode())
   
   def compress(self, hash_code): # method makes sure that all hashcodes are within the bounds of the length of the array size
-    print("Compress method: {}".format(hash_code % self.array_size))
+    #print("Compress method: {}".format(hash_code % self.array_size))
     return hash_code % self.array_size
 
   def assign(self, key, value): # assigns an instance of Node(key, value) to the hashmap based of hashcode of key
@@ -46,9 +45,17 @@ class HashMap:
         return None
     
   def get_map(self):
-    for hash_map_item in self.array:
+    for hash_map_item in self.array: # self.array is a list of LinkedList instances
       for iterable_list in hash_map_item:
-        print(type(iterable_list))
+        map_key = iterable_list[0]
+        #print(map_key)
+        map_array_index = self.compress(self.hash(map_key))
+        print(f'Array index {map_array_index} contains {iterable_list}') # can reference the array index to get the items in self.array
+        # use array index to find the linkedlist and the use __iter__ method to list all items in the array at index(array_index)
+        
+        
+    for i in (self.array[7]):
+      print(i)
 
 blossom = HashMap(len(flower_definitions))
 for flower in flower_definitions:
@@ -57,7 +64,6 @@ for flower in flower_definitions:
 
 
 blossom.get_map()
-
 
 
 
