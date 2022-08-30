@@ -46,6 +46,7 @@ class HashMap:
     
   def get_map(self):
     for hash_map_item in self.array: # self.array is a list of LinkedList instances
+    for hash_map_item in self.array: # self.array is a list of LinkedList instances
       for iterable_list in hash_map_item:
         map_key = iterable_list[0]
         #print(map_key)
