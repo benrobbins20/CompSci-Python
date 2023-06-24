@@ -1,5 +1,4 @@
 ###################
-#
 # knapsack problem
 # made a nice diagram of a length of 4 list
 # shows the flow like the fib sequence and path through maximum knapsack value
@@ -28,21 +27,21 @@ def knapsack_recursion(weight_cap,values,weights,n):
         # if item is included, add value of item to return value, subtract weight of that item from the weight_cap, move to next item n - 1
         # else move on to the next item n - 1
         # with recursion the index will hit every index value, either add item or skip item
+        # for simplicity, can think of the recursion loop as starting with 2 roots
+        # one path including including first index compared 
+        # and a path not including first index compared
+        # from there each tree from I and E are compared for max 
         
         nth_value = values[n - 1]
-        include_item = nth_value = knapsack_recursion(weight_cap - weights[n - 1], values, weights, n - 1)
+        include_item = nth_value + knapsack_recursion(weight_cap - weights[n - 1], values, weights, n - 1)
         exclude_item = knapsack_recursion(weight_cap, values, weights, n - 1)
-        
         return max(include_item,exclude_item)
 
 weight_cap = 50    
 values = [90, 60, 100, 120]
 weights = [10, 10, 20, 30]
-if len(values) == len(weights):
-    n = len(values)
-else:
-    # silent exit
-    exit()
+n = len(values)
+
 max_ = knapsack_recursion(weight_cap,values,weights,n)
 print(max_)    
     
