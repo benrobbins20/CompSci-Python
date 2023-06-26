@@ -2,6 +2,11 @@
 # knapsack problem
 # made a nice diagram of a length of 4 list
 # shows the flow like the fib sequence and path through maximum knapsack value
+##################
+# also made diagram of iterative approach using tabulation/memoization concepts
+# iterative, does need recursive call in 
+# TODO
+# todo would be make an updating chart that fills in slowly so you can visualize the cells being populated 
 
 def recursive_knapsack(weight_cap,values,weights,n):
     # max carrying cap
