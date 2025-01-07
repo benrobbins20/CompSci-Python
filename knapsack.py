@@ -25,6 +25,7 @@ def recursive_knapsack(weight_cap,values,weights,n):
         # weight exceeds weight cap 
         # skip by recursive call to next index
         recursive_knapsack(weight_cap, values, weights, n - 1)
+        recursive_knapsack(weight_cap, values, weights, n - 1)
         
     else:
         # enter the recursive loop
@@ -88,15 +89,17 @@ def dynamic_knapsack(weight_cap, weights, values):
         
         # else, the current item weight > index (weight larger than capacity), exclude item
       else:
-        matrix[item][weight] = matrix[item - 1][weight] # value from above cell
+        # if we exceed the weight limit on the item then it means we have to exclude it by default
+        # excluded items will be located one cell directly above over-weight cell 
+        matrix[index][weight] = matrix[index - 1][weight]
         
-  # max value has percolated its way down to the bottom right cell
-  return matrix[-1][-1]
-    
-    
 
-
-
+  
+  # Return the value of the bottom right of matrix
+  for row in matrix:
+    print(row)
+    #print("\n")
+  return matrix[rows-1][weight_cap]
 
 #####RECURSIVE KNAPSACK#########
 
@@ -112,9 +115,5 @@ n = len(values)
 weight_cap = 50
 weights = [31, 10, 20, 19, 4, 3, 6]
 values = [70, 20, 39, 37, 7, 5, 10]
-#print(dynamic_knapsack(weight_cap, weights, values))
-
-
-print(dynamic_knapsack(5, [1, 3, 5], [250, 300, 500]))
-    
+print(dynamic_knapsack(weight_cap, weights, values))    
     
